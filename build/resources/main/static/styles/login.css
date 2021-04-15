@@ -1,0 +1,76 @@
+.login h1{
+    font-size: 600%;
+    margin-right: 40%;
+    padding-left: 15%;
+
+}
+
+body{
+    background: url("https://miro.medium.com/max/1000/0*6ozbRKvlxDnzn80G.jpg") no-repeat;
+    background-size: cover;
+    border-radius: 1000px;
+    /*background: url("../img/backgraund.png") no-repeat top;*/
+}
+
+
+.login label{
+    font-size: 26px;
+    color: white;
+}
+
+.login{
+    background-color: rgba(100, 95, 95, 0.70);
+    height: 700px;
+    width: 350px;
+    border-radius: 90px;
+    text-align: center;
+    margin: 45px auto;
+}
+
+.login form
+{
+
+    padding: 0 65px;
+}
+
+
+
+.my_check_box{
+    display: inline;
+}
+
+
+div.login_field{
+    margin-top: 1%;
+}
+
+
+
+input[type=text]{
+    width:250px;
+}
+
+input[type=password]{
+    width:250px;
+}
+
+input[type=checkbox]{
+    width:15px;
+    height: 15px;
+    margin-top: 15px;
+}
+
+.login button{
+    margin: 45px auto;
+    font-weight: 700;
+    text-decoration: none;
+    margin-bottom: 20px;
+
+}
+
+.login a{
+    margin: 0px auto 45px;
+    font-weight: 700;
+    text-decoration: none;
+
+}

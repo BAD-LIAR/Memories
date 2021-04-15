@@ -1,0 +1,52 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'ru.itis'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-freemarker'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-web-services'
+    implementation 'org.springframework.session:spring-session-core'
+    compileOnly 'org.projectlombok:lombok'
+    runtimeOnly 'org.postgresql:postgresql'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.3.9.RELEASE'
+    // https://mvnrepository.com/artifact/javax.validation/validation-api
+    implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+    // https://mvnrepository.com/artifact/org.springframework.session/spring-session-core
+    implementation group: 'org.springframework.session', name: 'spring-session-core', version: '2.3.2.RELEASE'
+    // https://mvnrepository.com/artifact/org.springframework.session/spring-session-jdbc
+    implementation group: 'org.springframework.session', name: 'spring-session-jdbc', version: '2.3.2.RELEASE'
+    // https://mvnrepository.com/artifact/javax.mail/mail
+    implementation group: 'javax.mail', name: 'mail', version: '1.4.1'
+    // https://mvnrepository.com/artifact/org.hibernate/hibernate-validator
+    implementation group: 'org.hibernate', name: 'hibernate-validator', version: '6.2.0.Final'
+
+
+
+
+
+}
+
+test {
+    useJUnitPlatform()
+}
