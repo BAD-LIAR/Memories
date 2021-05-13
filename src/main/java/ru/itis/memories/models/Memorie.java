@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -30,6 +31,10 @@ public class Memorie implements Serializable {
 
 
     private static final long serialVersionUID = 7880619528188746225L;
+
+
+    @OneToMany(mappedBy = "memorie")
+    private List<MemorieAccess> participantMemories;
 
 
 

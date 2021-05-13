@@ -29,6 +29,9 @@ public class User implements Serializable {
     private String confirmCode;
     private Integer age;
     private String city;
+    private Integer memoriesCount;
+    private Integer togetherMemoriesCount;
+    private String avatar;
 
     private static final long serialVersionUID = 7880619528188746225L;
 
@@ -61,4 +64,7 @@ public class User implements Serializable {
 
     @OneToMany(mappedBy = "owner")
     private List<Memorie> memories;
+
+    @OneToMany(mappedBy = "participant")
+    private List<MemorieAccess> participantMemories;
 }

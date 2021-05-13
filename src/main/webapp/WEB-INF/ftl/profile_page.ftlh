@@ -9,31 +9,43 @@
     <title>Document</title>
 </head>
 <body>
+<div class="exit" onclick="location.href='/logout'">Выйти</div>
 <div class="tab">
     <h1>PROFILE</h1>
-    <div>
-        <a class="exit" href="/logout">Выйти</a>
-        <a class="email">${user.username}</a>
+    <img class="settings" src="/styles/img/settings.png" onclick="location.href='/settings'">
+    <br>
+    <img class="avatar" src="/styles/img/avatars/profile_photo.jpg">
+    <br>
+    <a class="email">${user.firstName} ${user.lastName} </a>
+    <br>
+    <br>
+    <a class="profile_text">Воспоминаний: ${user.memoriesCount}</a>
+    <br>
+    <br>
+    <a class="profile_text">Совместных воспоминаний: ${user.togetherMemoriesCount}</a>
+</div>
+
+
+<div class="blocks">
+    <div class="my_blocks" onclick="location.href='/my_memories'">
+        <a class="my_text">Мои воспомнинания</a>
+        <#--    <br>-->
+        <#--    <#list memoriesList as memorie>-->
+        <#--        <tr>-->
+        <#--            <td>${memorie.id}</td>-->
+        <#--            <td>${memorie.text}</td>-->
+        <#--        </tr>-->
+        <#--        <br>-->
+        <#--    </#list>-->
     </div>
-</div>
 
-<div class="my_blocks" onclick="location.href='/my_memories'">
-    <a>Мои воспомнинания</a>
-<#--    <br>-->
-<#--    <#list memoriesList as memorie>-->
-<#--        <tr>-->
-<#--            <td>${memorie.id}</td>-->
-<#--            <td>${memorie.text}</td>-->
-<#--        </tr>-->
-<#--        <br>-->
-<#--    </#list>-->
-</div>
+    <div class="my_blocks" onclick="location.href='/together'">
+        <a class="my_text">Совместные воспоминания</a>
+    </div>
+    <div class="my_blocks" onclick="location.href='/new_memorie'">
+        <a class="my_text">Добавить воспамнинание</a>
+    </div>
 
-<div class="my_blocks"onclick="location.href='/together'">
-    <a>Совместные воспоминания</a>
-</div>
-<div class="my_blocks" onclick="location.href='/new_memorie'">
-    <a>Добавить воспамнинание</a>
 </div>
 
 

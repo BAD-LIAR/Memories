@@ -1,0 +1,25 @@
+html {
+    background: rgb(214, 86, 43);
+}
+
+.add_body {
+    background: #4b88c3;
+    border-radius: 20px;
+    border: 6px black;
+    float: left;
+    width: 270px;
+    padding: 20px;
+
+    margin: 5px;
+}
+
+.my_table {
+    background: #4b88c3;
+    border-radius: 20px;
+    border: 6px black;
+    width: 270px;
+    padding: 20px;
+    margin: 5px;
+}
+
+

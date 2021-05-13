@@ -13,7 +13,9 @@ public interface MemorieService {
 
     Memorie getById(Long id);
 
-    void save(MemorieForm memorieForm);
+    void save(Memorie memorie);
 
     List<Memorie> getAllByOwner(User user);
+
+    List<Memorie> getAllTogether(Long id);
 }

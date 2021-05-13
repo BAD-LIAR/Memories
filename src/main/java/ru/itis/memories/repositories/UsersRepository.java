@@ -30,4 +30,11 @@ public interface UsersRepository extends JpaRepository<User, Long> {
     void unBanById(@Param("id") Long id);
 
     User getUserByEmail(String email);
+
+    @Transactional
+    @Modifying
+    @Query("update User set memoriesCount = memoriesCount + 1 where id = :id")
+    void chengMemoriesCount(@Param("id") Long id);
+
+
 }

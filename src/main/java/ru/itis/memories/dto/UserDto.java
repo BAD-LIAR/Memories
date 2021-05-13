@@ -23,6 +23,9 @@ public class UserDto {
     private String password;
     private User.Role role;
     private User.State state;
+    private String avatar;
+    private Integer memoriesCount;
+    private Integer togetherMemoriesCount;
 
     public static UserDto from(User user) {
         if (user == null) {
@@ -36,6 +39,7 @@ public class UserDto {
                 .email(user.getEmail())
                 .role(user.getRole())
                 .state(user.getState())
+                .avatar(user.getAvatar())
                 .build();
     }
 

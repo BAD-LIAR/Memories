@@ -1,0 +1,152 @@
+* {
+    margin: 0px;
+    padding: 0px
+}
+
+html {
+    background: rgb(214, 86, 43);
+}
+
+h1 {
+    margin-left: 130px;
+
+    float: left;
+    padding-bottom: 10px;
+}
+
+
+.tab {
+    align-self: center;
+    border-radius: 10px;
+    background: rgba(67, 72, 172, 0.87);
+    height: 600px;
+    width: 400px;
+    float: left;
+    margin-top: 7px;
+    margin-left: 35%;
+    padding: 10px;
+
+}
+
+button {
+    height: 60px;
+    width: 200px;
+    border-radius: 20px;
+}
+.exit {
+    text-align: right;
+    margin-top: 3px;
+    position: absolute;
+    right: 4px;
+    font-size: 35px;
+    float: left;
+    background: #5cb85c;
+    border-radius: 10px;
+    padding: 10px;
+    color: black;
+    cursor: pointer;
+
+}
+
+.email {
+    margin-top: 13px;
+    margin-left: 8%;
+    font-size: 27px;
+    text-align: center;
+}
+
+.my_blocks {
+    border: 2px solid #000;
+    width: 250px;
+    height: 250px;
+    background: #1e90ff;
+    float: left;
+    margin: 6px;
+    padding: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+
+}
+
+.my_blocks:hover {
+    border-color: #ff0000;
+    background: #4b88c3;
+}
+
+.my_text {
+    font-size: 25px;
+    color: #ffffff;
+}
+
+.blocks {
+    margin-top: 20px;
+    float: left;
+    width: 40%;
+    margin-left: 20px;
+}
+
+.avatar {
+    width: 170px;
+    height: 170px;
+    display: block;
+    margin: auto;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.avatar_h {
+    width: 85px;
+    height: 85px;
+    padding: 42px;
+    opacity: 0;
+    display: block;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.avatar_h:hover {
+    opacity: 1;
+}
+
+.avatar:hover {
+    opacity: 0.6;
+}
+
+.profile_text {
+    font-size: 19px;
+    padding-top: 10px;
+}
+
+.settings {
+    float: right;
+}
+
+.submit {
+    margin-left: 25%;
+    margin-top: 25px;
+}
+
+.file {
+    border-radius: 10px;
+    margin-left: 25%;
+    height: 30px;
+    width: 200px;
+    margin-top: 20px;
+}
+
+.inputfile {
+    /* visibility: hidden etc. wont work */
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+.inputfile:focus + label {
+    /* keyboard navigation */
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+.inputfile + label * {
+    pointer-events: none;
+}

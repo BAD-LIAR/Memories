@@ -21,4 +21,14 @@ public interface MemoriesRepository extends JpaRepository<Memorie, Long> {
 
     List<Memorie> getAllByOwner(User user);
 
+    @Query(nativeQuery = true, value = "select m2.id, m2.owner_id, m2.text " +
+            "from account a join memorieaccess m " +
+            "on a.id = m.participant_id " +
+            "join memorie m2 " +
+            "on m2.id = m.memorie_id " +
+            "where a.id = :id")
+    List<Memorie> getAllTogether(@Param("id") Long id);
+
+
+
 }

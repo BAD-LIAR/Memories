@@ -29,16 +29,17 @@ public class MemorieServiceImpl implements MemorieService {
     }
 
     @Override
-    public void save(MemorieForm memorieForm) {
-        Memorie memorie = Memorie.builder()
-                .text(memorieForm.getText())
-                .owner(memorieForm.getOwner())
-                .build();
+    public void save(Memorie memorie) {
         memoriesRepository.save(memorie);
     }
 
     @Override
     public List<Memorie> getAllByOwner(User user) {
         return memoriesRepository.getAllByOwner(user);
+    }
+
+    @Override
+    public List<Memorie> getAllTogether(Long id) {
+        return memoriesRepository.getAllTogether(id);
     }
 }

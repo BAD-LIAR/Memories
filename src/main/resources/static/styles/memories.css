@@ -1,0 +1,52 @@
+* {
+    margin: 0px;
+    padding: 0px
+}
+
+html {
+    background: rgb(214, 86, 43);
+}
+
+h1 {
+    margin-left: 90px;
+
+    float: left;
+    padding-bottom: 10px;
+}
+
+.memories {
+    background: white;
+    border-radius: 20px;
+    margin: 20px;
+    width: 20%;
+    float: left;
+    padding: 10px;
+}
+
+.exit {
+    text-align: right;
+    margin-top: 3px;
+    position: absolute;
+    right: 4px;
+    font-size: 35px;
+    background: #5cb85c;
+    border-radius: 10px;
+    padding: 10px;
+    color: black;
+    cursor: pointer;
+}
+
+
+.profile {
+    text-align: right;
+    margin-top: 3px;
+    position: absolute;
+    top: 70px;
+    right: 4px;
+    font-size: 35px;
+    background: #5cb85c;
+    border-radius: 10px;
+    padding: 10px;
+    color: black;
+    cursor: pointer;
+}

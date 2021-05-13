@@ -2,6 +2,7 @@ package ru.itis.memories.services;
 
 
 
+import org.springframework.web.multipart.MultipartFile;
 import ru.itis.memories.dto.UserDto;
 import ru.itis.memories.dto.UserForm;
 import ru.itis.memories.models.User;
@@ -14,7 +15,7 @@ public interface UsersService {
     List<UserDto> getAllUsers();
     boolean addUser(UserForm userDto);
 
-    UserDto getUser(Long userId);
+    User getUser(Long userId);
     public boolean containsUser(String email);
     Optional<User> findByEmail(String email);
     void banById(Long id);
@@ -23,4 +24,11 @@ public interface UsersService {
     void unBanById(Long parseLong);
 
     User getUserByEmail(String email);
+
+
+    void updateUser(Long id, String firstName, String lastName, MultipartFile file);
+
+
+
+    void addedToMemorie(String owner, List<String> strings);
 }

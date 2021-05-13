@@ -179,6 +179,8 @@ public class MemoriesApplication {
         return new BCryptPasswordEncoder();
     };
 
+
+
     public static void main(String[] args) {
         SpringApplication.run(MemoriesApplication.class, args);
     }
