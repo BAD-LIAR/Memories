@@ -1,0 +1,68 @@
+.login h1{
+    font-size: 600%;
+    margin-right: 40%;
+    padding-left: 15%;
+
+}
+
+body{
+    background-color: rgba(64, 144, 255, 0.43);
+    /*background: url("../img/backgraund.png") no-repeat top;*/
+}
+
+.login{
+    background: url("https://avatars.mds.yandex.net/get-zen_doc/1538671/pub_5f7c82bff862571092bd12cd_5f7c866f398ab5384be7e2bb/scale_1200") no-repeat top;
+    /*background-color: rgba(255, 255, 255, 0.58);*/
+    height: 900px;
+    width: 600px;
+    text-align: center;
+    margin: 45px auto;
+}
+
+.login form
+{
+
+    padding: 0 65px;
+}
+
+
+
+.my_check_box{
+    display: inline;
+}
+
+
+div.login_field{
+    margin-top: 1%;
+}
+
+
+
+input[type=text]{
+    width:250px;
+}
+
+input[type=password]{
+    width:250px;
+}
+
+input[type=checkbox]{
+    width:15px;
+    height: 15px;
+    margin-top: 15px;
+}
+
+.login button{
+    margin: 45px auto;
+    font-weight: 700;
+    text-decoration: none;
+    margin-bottom: 20px;
+
+}
+
+.login a{
+    margin: 0px auto 45px;
+    font-weight: 700;
+    text-decoration: none;
+
+}
