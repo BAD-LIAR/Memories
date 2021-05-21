@@ -28,6 +28,7 @@ public class MemorieAccessServiceImpl implements MemorieAccessService {
 
     @Override
     public void save(List<String> emails, Memorie memorie) {
+        memorieAccessRepository.deleteAllByMemorie(memorie.getId());
         List<MemorieAccess> memorieAccessList = new ArrayList<>();
         for (String email: emails){
             MemorieAccess memorieAccess = new MemorieAccess();
@@ -38,4 +39,6 @@ public class MemorieAccessServiceImpl implements MemorieAccessService {
         }
         memorieAccessRepository.saveAll(memorieAccessList);
     }
+
+
 }

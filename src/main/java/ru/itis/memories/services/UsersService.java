@@ -5,6 +5,7 @@ package ru.itis.memories.services;
 import org.springframework.web.multipart.MultipartFile;
 import ru.itis.memories.dto.UserDto;
 import ru.itis.memories.dto.UserForm;
+import ru.itis.memories.models.Memorie;
 import ru.itis.memories.models.User;
 
 import java.util.List;
@@ -31,4 +32,6 @@ public interface UsersService {
 
 
     void addedToMemorie(String owner, List<String> strings);
+
+    void deletedFromMemorie(Memorie memorie);
 }

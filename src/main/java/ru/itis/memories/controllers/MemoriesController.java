@@ -43,13 +43,15 @@ public class MemoriesController {
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/new_memorie")
     public String getCreateMemorie(Model model) {
-        model.addAttribute("memorieForm", new MemorieForm());
+        model.addAttribute("memorie", Memorie.builder().text("").build());
+        model.addAttribute("users", new ArrayList<>());
+        model.addAttribute("url", "new_memorie");
         return "add_memorie";
     }
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping("/new_memorie")
-    public String createMemorie(Principal principal, @RequestParam(value = "input") String input,
+    public String createMemorie(Principal principal, @RequestParam(value = "tittle") String input,
                                 @RequestParam(value = "row") String[] rows) {
 
 
@@ -65,6 +67,7 @@ public class MemoriesController {
 
         usersService.addedToMemorie(principal.getName(), list);
         memorie.setText(input);
+        memorie.setIsDeleted(false);
         memorie.setOwner(usersService.getUserByEmail(principal.getName()));
         memorieService.save(memorie);
         memorieAccessService.save(list, memorie);
@@ -76,7 +79,7 @@ public class MemoriesController {
     @GetMapping("/my_memories")
     public String getProfilePage(@AuthenticationPrincipal UserDetailsImpl user, Model model) {
         model.addAttribute("user", user);
-        List<Memorie> memorieList = usersService.getUserByEmail(user.getUsername()).getMemories();
+        List<Memorie> memorieList = memorieService.getAllByOwner(usersService.getUserByEmail(user.getUsername()));
         model.addAttribute("memoriesList", memorieList);
         return "my_memories";
     }
@@ -96,14 +99,81 @@ public class MemoriesController {
     String addUser(@RequestParam(value = "email") String email) {
         User user = usersService.getUserByEmail(email);
         if (usersService.findByEmail(email).isPresent()){
-            String response = "<tr>\n" +
-                    "                    <td contenteditable=\"true\">" + user.getId() + "</td>\n" +
+            String response = "<tr id=\"tr" + user.getId() + "\">" +
                     "                    <td class=\"eml\" contenteditable=\"true\">" + user.getEmail() + "</td>\n" +
                     "                    <td contenteditable=\"true\">"+ user.getFirstName() + " " + user.getLastName() + "</td>\n" +
+                    "                    <td><img class=\"edit\" src=\"/styles/img/delete.jpg\" onclick=\"$('#tr" + user.getId() + "').remove();\"></td>" +
                     "                </tr>";
             return response;
         } else {
             return "<a id=\"not_found\" style=\"    background: red;\"> Not Found </a>";
         }
     }
+
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/delete")
+    public String getDeleteMemorie(@AuthenticationPrincipal UserDetailsImpl user, Model model, @RequestParam(value = "id") Long id) {
+        Memorie memorie = memorieService.getById(id);
+        if (memorie.getOwner().getId().equals(user.getId())) {
+            model.addAttribute("memorie", memorie);
+            return "delete_memorie_page";
+        } else {
+            return "redirect:/my_memories";
+        }
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/delete")
+    public String deletememorie(@AuthenticationPrincipal UserDetailsImpl user, @RequestParam(value = "id") Long id) {
+        Memorie memorie = memorieService.getById(id);
+        if (memorie.getOwner().getId().equals(user.getId())) {
+            memorieService.deleteById(id);
+        }
+        return "redirect:/my_memories";
+    }
+
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/edit")
+    public String getEditMemorie(@AuthenticationPrincipal UserDetailsImpl user, Model model, @RequestParam(value = "id") Long id) {
+        Memorie memorie = memorieService.getById(id);
+        if (memorie.getOwner().getId().equals(user.getId())) {
+            model.addAttribute("memorie", memorie);
+            model.addAttribute("users", memorieService.getAllPartipient(id));
+            model.addAttribute("url", "edit?id=" + id);
+            return "add_memorie";
+        } else {
+            return "redirect:/my_memories";
+        }
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/edit")
+    public String editMemorie(@AuthenticationPrincipal UserDetailsImpl user, @RequestParam(value = "id") Long id,
+                              @RequestParam(value = "tittle") String input,
+                              @RequestParam(value = "row") String[] rows) {
+        Memorie memorie = memorieService.getById(id);
+        if (memorie.getOwner().getId().equals(user.getId())) {
+            List<String> list = new ArrayList<>();
+            rows[0] = rows[0].substring(1);
+            rows[rows.length - 1] = rows[rows.length - 1].substring(0, rows[rows.length - 1].length() - 1);
+            for(String row: rows){
+                if (!row.equals("")) {
+                    list.add(row.substring(1, row.length() - 1));
+                }
+            }
+
+            usersService.deletedFromMemorie(memorie);
+            usersService.addedToMemorie(user.getUsername(), list);
+            memorie.setText(input);
+            memorie.setIsDeleted(false);
+            memorie.setOwner(usersService.getUserByEmail(user.getUsername()));
+            memorieService.save(memorie);
+            memorieAccessService.save(list, memorie);
+        }
+        return "redirect:/my_memories";
+    }
+
+
 }

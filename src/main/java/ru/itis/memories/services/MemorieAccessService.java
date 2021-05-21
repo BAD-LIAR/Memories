@@ -10,4 +10,5 @@ public interface MemorieAccessService {
 
 
     void save(List<String> emails, Memorie memorie);
+
 }

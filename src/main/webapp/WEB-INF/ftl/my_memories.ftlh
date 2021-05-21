@@ -16,6 +16,8 @@
     <#list memoriesList as memorie>
         <div class="memories">
             <a>ID: ${memorie.id}</a>
+            <img class="edit" src="/styles/img/edit.png" onclick="location.href='/edit?id=${memorie.id}'">
+            <img class="edit" src="/styles/img/delete.jpg" onclick="location.href='/delete?id=${memorie.id}'">
             <br>
             <a>TEXT: ${memorie.text}</a>
         </div>

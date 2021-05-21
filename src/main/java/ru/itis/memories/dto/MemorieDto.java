@@ -21,6 +21,7 @@ public class MemorieDto {
     private Long id;
     private User owner;
     private String text;
+    private Boolean isDeleted;
 
 
     public static MemorieDto from(Memorie memorie) {
@@ -31,6 +32,7 @@ public class MemorieDto {
                 .id(memorie.getId())
                 .owner(memorie.getOwner())
                 .text(memorie.getText())
+                .isDeleted(memorie.getIsDeleted())
                 .build();
     }
 

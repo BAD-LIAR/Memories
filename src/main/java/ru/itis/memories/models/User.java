@@ -33,6 +33,13 @@ public class User implements Serializable {
     private Integer togetherMemoriesCount;
     private String avatar;
 
+    public User(Long id, String firstName, String lastName, String email) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
     private static final long serialVersionUID = 7880619528188746225L;
 
     @Enumerated(value = EnumType.STRING)

@@ -27,6 +27,9 @@ public class Memorie implements Serializable {
 
     private String text;
 
+    @Column(columnDefinition = "boolean  default false")
+    private Boolean isDeleted;
+
 
 
 

@@ -1,9 +1,9 @@
 package ru.itis.memories.services;
 
 
-import ru.itis.memories.dto.MemorieForm;
 import ru.itis.memories.models.Memorie;
 import ru.itis.memories.models.User;
+
 
 import java.util.List;
 
@@ -18,4 +18,8 @@ public interface MemorieService {
     List<Memorie> getAllByOwner(User user);
 
     List<Memorie> getAllTogether(Long id);
+
+    void deleteById(Long id);
+
+    List<User> getAllPartipient(Long id);
 }

@@ -17,9 +17,14 @@ html {
     background: #4b88c3;
     border-radius: 20px;
     border: 6px black;
-    width: 270px;
+    width: 600px;
     padding: 20px;
     margin: 5px;
+}
+
+.edit {
+    height: 20px;
+    width: 20px;
 }
 
 

@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import ru.itis.memories.dto.UserDto;
 import ru.itis.memories.dto.UserForm;
+import ru.itis.memories.models.Memorie;
+import ru.itis.memories.models.MemorieAccess;
 import ru.itis.memories.models.User;
 import ru.itis.memories.repositories.UsersRepository;
 
@@ -35,11 +37,7 @@ public class UsersServiceImpl implements UsersService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Value("${server.url}")
-    private String serverUrl;
 
-    @Value("${spring.mail.username}")
-    private String from;
 
     @Override
     public List<UserDto> getAllUsers() {
@@ -125,6 +123,17 @@ public class UsersServiceImpl implements UsersService {
             User user = this.getUserByEmail(s);
             user.setTogetherMemoriesCount(user.getTogetherMemoriesCount() + 1);
             usersRepository.save(user);
+        }
+    }
+
+    @Override
+    public void deletedFromMemorie(Memorie memorie) {
+        User owner1 = memorie.getOwner();
+        owner1.setMemoriesCount(owner1.getMemoriesCount() - 1);
+        usersRepository.save(owner1);
+        for (MemorieAccess memorieAccess: memorie.getParticipantMemories()){
+            User user1 = memorieAccess.getParticipant();
+            user1.setTogetherMemoriesCount(user1.getTogetherMemoriesCount() - 1);
         }
     }
 
