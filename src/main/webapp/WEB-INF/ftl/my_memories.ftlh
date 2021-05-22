@@ -20,6 +20,11 @@
             <img class="edit" src="/styles/img/delete.jpg" onclick="location.href='/delete?id=${memorie.id}'">
             <br>
             <a>TEXT: ${memorie.text}</a>
+            <div class="fotorama" id="list" style="border: 10px black;">
+                <#list photos as photo>
+                    <img src="${photo}"
+                </#list>
+            </div>
         </div>
     </#list>
 </div>

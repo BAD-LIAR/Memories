@@ -3,8 +3,8 @@ ru/itis/memories/models/Memorie.java
  ru.itis.memories.models.Memorie$MemorieBuilder
 ru/itis/memories/security/details/UserDetailsServiceImpl.java
  ru.itis.memories.security.details.UserDetailsServiceImpl
-ru/itis/memories/validation/NamesValidator.java
- ru.itis.memories.validation.NamesValidator
+ru/itis/memories/services/UsersService.java
+ ru.itis.memories.services.UsersService
 ru/itis/memories/dto/MemorieForm.java
  ru.itis.memories.dto.MemorieForm
 ru/itis/memories/services/MemorieAccessService.java
@@ -26,8 +26,8 @@ ru/itis/memories/config/Config.java
  ru.itis.memories.config.Config
 ru/itis/memories/services/MemorieService.java
  ru.itis.memories.services.MemorieService
-ru/itis/memories/config/SecurityWebApplicationInitializer.java
- ru.itis.memories.config.SecurityWebApplicationInitializer
+ru/itis/memories/services/UsersServiceImpl.java
+ ru.itis.memories.services.UsersServiceImpl
 ru/itis/memories/dto/MemorieDto.java
  ru.itis.memories.dto.MemorieDto
  ru.itis.memories.dto.MemorieDto$MemorieDtoBuilder
@@ -58,13 +58,13 @@ ru/itis/memories/dto/UserDto.java
  ru.itis.memories.dto.UserDto$UserDtoBuilder
 ru/itis/memories/services/MemorieServiceImpl.java
  ru.itis.memories.services.MemorieServiceImpl
-ru/itis/memories/controllers/MemoriesController.java
- ru.itis.memories.controllers.MemoriesController
-ru/itis/memories/controllers/ProfileController.java
- ru.itis.memories.controllers.ProfileController
-ru/itis/memories/services/UsersService.java
- ru.itis.memories.services.UsersService
+ru/itis/memories/config/SecurityWebApplicationInitializer.java
+ ru.itis.memories.config.SecurityWebApplicationInitializer
 ru/itis/memories/controllers/UsersController.java
  ru.itis.memories.controllers.UsersController
-ru/itis/memories/services/UsersServiceImpl.java
- ru.itis.memories.services.UsersServiceImpl
+ru/itis/memories/validation/NamesValidator.java
+ ru.itis.memories.validation.NamesValidator
+ru/itis/memories/controllers/ProfileController.java
+ ru.itis.memories.controllers.ProfileController
+ru/itis/memories/controllers/MemoriesController.java
+ ru.itis.memories.controllers.MemoriesController

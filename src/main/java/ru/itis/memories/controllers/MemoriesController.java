@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import ru.itis.memories.dto.MemorieForm;
 import ru.itis.memories.dto.UserForm;
 import ru.itis.memories.models.Memorie;
@@ -46,13 +47,15 @@ public class MemoriesController {
         model.addAttribute("memorie", Memorie.builder().text("").build());
         model.addAttribute("users", new ArrayList<>());
         model.addAttribute("url", "new_memorie");
+        model.addAttribute("photos", new ArrayList<>());
         return "add_memorie";
     }
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping("/new_memorie")
     public String createMemorie(Principal principal, @RequestParam(value = "tittle") String input,
-                                @RequestParam(value = "row") String[] rows) {
+                                @RequestParam(value = "row") String[] rows,
+                                @RequestParam(value = "files") MultipartFile[] file) {
 
 
         Memorie memorie = new Memorie();
@@ -79,6 +82,7 @@ public class MemoriesController {
     @GetMapping("/my_memories")
     public String getProfilePage(@AuthenticationPrincipal UserDetailsImpl user, Model model) {
         model.addAttribute("user", user);
+        model.addAttribute("photos", new ArrayList<>());
         List<Memorie> memorieList = memorieService.getAllByOwner(usersService.getUserByEmail(user.getUsername()));
         model.addAttribute("memoriesList", memorieList);
         return "my_memories";
@@ -88,6 +92,7 @@ public class MemoriesController {
     @GetMapping("/together")
     public String getTogetherMemories(@AuthenticationPrincipal UserDetailsImpl user, Model model){
         List<Memorie> memorieList = memorieService.getAllTogether(user.getId());
+        model.addAttribute("photos", new ArrayList<>());
         model.addAttribute("memoriesList", memorieList);
         return "my_memories";
 
@@ -136,12 +141,14 @@ public class MemoriesController {
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/edit")
-    public String getEditMemorie(@AuthenticationPrincipal UserDetailsImpl user, Model model, @RequestParam(value = "id") Long id) {
+    public String getEditMemorie(@AuthenticationPrincipal UserDetailsImpl user, Model model,
+                                 @RequestParam(value = "id") Long id) {
         Memorie memorie = memorieService.getById(id);
         if (memorie.getOwner().getId().equals(user.getId())) {
             model.addAttribute("memorie", memorie);
             model.addAttribute("users", memorieService.getAllPartipient(id));
             model.addAttribute("url", "edit?id=" + id);
+            model.addAttribute("photos", new ArrayList<>());
             return "add_memorie";
         } else {
             return "redirect:/my_memories";
@@ -152,7 +159,8 @@ public class MemoriesController {
     @PostMapping("/edit")
     public String editMemorie(@AuthenticationPrincipal UserDetailsImpl user, @RequestParam(value = "id") Long id,
                               @RequestParam(value = "tittle") String input,
-                              @RequestParam(value = "row") String[] rows) {
+                              @RequestParam(value = "row") String[] rows,
+                              @RequestParam(value = "files") MultipartFile[] file) {
         Memorie memorie = memorieService.getById(id);
         if (memorie.getOwner().getId().equals(user.getId())) {
             List<String> list = new ArrayList<>();
